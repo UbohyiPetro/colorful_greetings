@@ -3,9 +3,7 @@ import 'package:colorful_greetings/home/ui/history_drawer/history_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// ignore: public_member_api_docs
 class HomeScreen extends StatelessWidget {
-  // ignore: public_member_api_docs
   const HomeScreen({super.key});
 
   @override
@@ -16,12 +14,7 @@ class HomeScreen extends StatelessWidget {
         onTap: colorController.generateNewColor,
         child: Scaffold(
           endDrawer: const HistoryDrawer(),
-          backgroundColor: Color.fromRGBO(
-            colorController.colorState.red.value,
-            colorController.colorState.green.value,
-            colorController.colorState.blue.value,
-            1.0,
-          ),
+          backgroundColor: colorController.getCurrentBackgroundColor(),
           appBar: AppBar(
             actions: [
               Builder(
@@ -40,9 +33,19 @@ class HomeScreen extends StatelessWidget {
             ],
             title: const Text("Colorful Greetings"),
           ),
-          body: const SafeArea(
+          body: SafeArea(
             child: Center(
-              child: Text('Hello There'),
+              child: Text(
+                'Hello There',
+                style: TextStyle(
+                  color: colorController
+                              .getCurrentBackgroundColor()
+                              .computeLuminance() >
+                          0.5
+                      ? Colors.black
+                      : Colors.white,
+                ),
+              ),
             ),
           ),
         ),
