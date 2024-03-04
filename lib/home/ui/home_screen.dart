@@ -10,18 +10,23 @@ class HomeScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Scaffold(
+        endDrawer: Text("DRAWER"),
         backgroundColor: Colors.red,
         appBar: AppBar(
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.history,
-                ),
-              ),
-            ),
+            Builder(
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: IconButton(
+                    onPressed: () => Scaffold.of(context).openEndDrawer(),
+                    icon: const Icon(
+                      Icons.history,
+                    ),
+                  ),
+                );
+              },
+            )
           ],
           title: const Text("Colorful Greetings"),
         ),
