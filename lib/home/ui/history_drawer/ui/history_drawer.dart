@@ -1,4 +1,4 @@
-import 'package:colorful_greetings/home/ui/history_drawer/history_item_component.dart';
+import 'package:colorful_greetings/home/ui/history_drawer/ui/history_item_component.dart';
 import 'package:flutter/material.dart';
 
 class HistoryDrawer extends StatelessWidget {
@@ -14,7 +14,7 @@ class HistoryDrawer extends StatelessWidget {
             HistoryItemComponent(color: Colors.black,),
             HistoryItemComponent(color: Colors.white,),
             HistoryItemComponent(color: Colors.pink,),
-            HistoryItemComponent(color: Colors.amberAccent,),
+            HistoryItemComponent(color: Colors.amberAccent,)
           ],
         ),
       ),
