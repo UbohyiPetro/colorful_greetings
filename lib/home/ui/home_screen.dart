@@ -1,3 +1,4 @@
+import 'package:colorful_greetings/home/ui/history_drawer/history_drawer.dart';
 import 'package:flutter/material.dart';
 
 // ignore: public_member_api_docs
@@ -8,20 +9,26 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+      },
       child: Scaffold(
+        endDrawer: const HistoryDrawer(),
         backgroundColor: Colors.red,
         appBar: AppBar(
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.history,
-                ),
-              ),
-            ),
+            Builder(
+              builder: (BuildContext context) {
+                return Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: IconButton(
+                    onPressed: () => Scaffold.of(context).openEndDrawer(),
+                    icon: const Icon(
+                      Icons.history,
+                    ),
+                  ),
+                );
+              },
+            )
           ],
           title: const Text("Colorful Greetings"),
         ),
