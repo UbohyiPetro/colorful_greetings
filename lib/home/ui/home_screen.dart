@@ -1,5 +1,7 @@
+import 'package:colorful_greetings/history/controller/history_controller.dart';
+import 'package:colorful_greetings/history/model/history_model.dart';
+import 'package:colorful_greetings/history/ui/history_drawer.dart';
 import 'package:colorful_greetings/home/controller/color_controller.dart';
-import 'package:colorful_greetings/home/ui/history_drawer/ui/history_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,9 +11,18 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorController colorController = Get.put(ColorController());
+    final HistoryController historyController = Get.put(HistoryController());
     return Obx(
       () => GestureDetector(
-        onTap: colorController.generateNewColor,
+        onTap: () {
+          colorController.generateNewColor();
+          final HistoryModel historyItem = HistoryModel(
+            red: colorController.colorState.red.value,
+            green: colorController.colorState.green.value,
+            blue: colorController.colorState.blue.value,
+          );
+          historyController.addColorToHistory(historyItem);
+        },
         child: Scaffold(
           endDrawer: const HistoryDrawer(),
           backgroundColor: colorController.getCurrentBackgroundColor(),
