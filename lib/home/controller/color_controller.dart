@@ -1,10 +1,12 @@
 import 'dart:math';
 
+import 'package:colorful_greetings/history/controller/history_controller.dart';
 import 'package:colorful_greetings/home/state/color_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ColorController extends GetxController {
+  final HistoryController historyController = Get.find<HistoryController>();
   final ColorState colorState = ColorState();
   final Random _random = Random();
 
@@ -36,5 +38,8 @@ class ColorController extends GetxController {
     colorState.red.value = red;
     colorState.green.value = green;
     colorState.blue.value = blue;
+    final historyItem =
+        historyController.generateHistoryModelFromColor(red, green, blue);
+    historyController.addColorToHistory(historyItem);
   }
 }
