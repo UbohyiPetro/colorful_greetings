@@ -1,3 +1,4 @@
+import 'package:colorful_greetings/home/theme/spacing.dart';
 import 'package:flutter/material.dart';
 
 class HistoryItemComponent extends StatelessWidget {
@@ -11,7 +12,9 @@ class HistoryItemComponent extends StatelessWidget {
       color: color,
       elevation: 0,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(
+          Spacing.small,
+        ),
         child: Center(
           child: Text(
             'R: value, G: value, B: value',
