@@ -1,5 +1,5 @@
 import 'package:colorful_greetings/home/controller/color_controller.dart';
-import 'package:colorful_greetings/home/ui/history_drawer/history_drawer.dart';
+import 'package:colorful_greetings/home/ui/history_drawer/ui/history_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
