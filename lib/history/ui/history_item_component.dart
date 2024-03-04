@@ -1,4 +1,4 @@
-import 'package:colorful_greetings/home/theme/spacing.dart';
+import 'package:colorful_greetings/theme/spacing.dart';
 import 'package:flutter/material.dart';
 
 class HistoryItemComponent extends StatelessWidget {
