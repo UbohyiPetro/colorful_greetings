@@ -1,17 +1,15 @@
-import 'dart:math';
-
 import 'package:colorful_greetings/history/controller/history_controller.dart';
 import 'package:colorful_greetings/history/mapper/history_mapper.dart';
 import 'package:colorful_greetings/home/mapper/color_mapper.dart';
-import 'package:colorful_greetings/home/model/color_item.dart';
 import 'package:colorful_greetings/home/state/color_state.dart';
+import 'package:colorful_greetings/util/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ColorController extends GetxController {
   final HistoryController historyController = Get.find<HistoryController>();
   final ColorState colorState = ColorState();
-  final Random _random = Random();
+  final ColorManager _colorManager = ColorManager();
 
   @override
   void onInit() {
@@ -30,11 +28,7 @@ class ColorController extends GetxController {
   }
 
   void generateNewColor() {
-    const maxColorValue = ColorState.MAX_COLOR_VALUE;
-    final red = _random.nextInt(maxColorValue);
-    final green = _random.nextInt(maxColorValue);
-    final blue = _random.nextInt(maxColorValue);
-    final colorItem = ColorItem(red: red, green: green, blue: blue);
+    final colorItem = _colorManager.generateColor().toColorItem();
     colorState.colorItem.value = colorItem;
     final historyItem = colorItem.toColor().toHistoryModel();
     historyController.addColorToHistory(historyItem);
