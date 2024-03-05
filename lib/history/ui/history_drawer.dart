@@ -1,6 +1,6 @@
 import 'package:colorful_greetings/history/controller/history_controller.dart';
 import 'package:colorful_greetings/history/ui/history_item_component.dart';
-import 'package:colorful_greetings/home/theme/spacing.dart';
+import 'package:colorful_greetings/theme/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
