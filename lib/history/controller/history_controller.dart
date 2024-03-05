@@ -1,20 +1,20 @@
-import 'package:colorful_greetings/history/model/history_model.dart';
+import 'package:colorful_greetings/core/repository/color_repository.dart';
 import 'package:colorful_greetings/history/state/history_state.dart';
 import 'package:get/get.dart';
 
 class HistoryController extends GetxController {
   final HistoryState historyState = HistoryState();
+  final ColorRepository _colorRepository = Get.find();
 
   @override
   void onInit() {
+    _observeColorHistory();
     super.onInit();
   }
 
-  List<HistoryModel> getHistoryList() {
-    return historyState.history;
-  }
-
-  void addColorToHistory(HistoryModel historyModel) {
-    historyState.history.insert(0, historyModel);
+  void _observeColorHistory() {
+    _colorRepository.observeColorHistory().listen((colorHistory) {
+      historyState.colors.value = colorHistory.map((color) => color).toList();
+    });
   }
 }

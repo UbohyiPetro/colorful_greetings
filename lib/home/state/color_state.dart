@@ -1,6 +1,7 @@
-import 'package:colorful_greetings/home/model/color_item.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ColorState {
-  Rx<ColorItem> colorItem = ColorItem().obs;
+  Rx<Color> color = Colors.black.obs;
+  Rx<Color> textColor = Colors.white.obs;
 }

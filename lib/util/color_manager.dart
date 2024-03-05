@@ -10,8 +10,7 @@ class ColorManager {
     final red = _random.nextInt(_MAX_COLOR_VALUE);
     final green = _random.nextInt(_MAX_COLOR_VALUE);
     final blue = _random.nextInt(_MAX_COLOR_VALUE);
-    final opacity = double.parse(_random.nextDouble().toStringAsFixed(2));
-    final Color newColor = Color.fromRGBO(red, green, blue, opacity);
+    final Color newColor = Color.fromRGBO(red, green, blue, 1.0);
     return newColor;
   }
 }

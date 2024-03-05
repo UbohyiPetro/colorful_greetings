@@ -10,24 +10,20 @@ class HistoryDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HistoryController historyController = Get.find<HistoryController>();
-    final history = historyController.historyState.history;
+    final colors = historyController.historyState.colors;
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.all(
           Spacing.medium,
         ),
-        child: ListView.builder(
-          itemCount: history.length,
-          itemBuilder: (BuildContext context, int index) {
-            final historyItem = history[index];
-            final historyItemColor = Color.fromRGBO(
-              historyItem.red,
-              historyItem.green,
-              historyItem.blue,
-              1.0,
-            );
-            return HistoryItemComponent(color: historyItemColor);
-          },
+        child: Obx(
+          () => ListView.builder(
+            itemCount: colors.length,
+            itemBuilder: (BuildContext context, int index) {
+              final color = colors[index];
+              return HistoryItemComponent(color: color);
+            },
+          ),
         ),
       ),
     );

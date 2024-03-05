@@ -17,7 +17,7 @@ class HistoryItemComponent extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'R: value, G: value, B: value',
+            'Red: ${color.red}, Green: ${color.green}, Blue: ${color.blue}',
             style: TextStyle(
               color:
                   color.computeLuminance() > 0.5 ? Colors.black : Colors.white,

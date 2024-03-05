@@ -1,10 +1,10 @@
-import 'package:colorful_greetings/history/controller/history_controller.dart';
-import 'package:colorful_greetings/home/controller/color_controller.dart';
+import 'package:colorful_greetings/core/repository/color_repository.dart';
 import 'package:colorful_greetings/home/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() {
+  Get.put(ColorRepository());
   runApp(const ColorfulGreetings());
 }
 
@@ -13,9 +13,7 @@ class ColorfulGreetings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HistoryController());
-    Get.put(ColorController());
-    return const MaterialApp(
+    return const GetMaterialApp(
       home: HomeScreen(),
     );
   }
