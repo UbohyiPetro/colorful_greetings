@@ -1,5 +1,5 @@
+import 'package:colorful_greetings/color_display/ui/color_display_screen.dart';
 import 'package:colorful_greetings/core/repository/color_repository.dart';
-import 'package:colorful_greetings/home/ui/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +14,7 @@ class ColorfulGreetings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const GetMaterialApp(
-      home: HomeScreen(),
+      home: ColorDisplayScreen(),
     );
   }
 }
