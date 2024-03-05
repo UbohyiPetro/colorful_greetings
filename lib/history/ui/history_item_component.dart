@@ -6,6 +6,10 @@ class HistoryItemComponent extends StatelessWidget {
 
   const HistoryItemComponent({Key? key, required this.color}) : super(key: key);
 
+  Color _calculateTextColor() {
+    return color.computeLuminance() > 0.5 ? Colors.black : Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -19,8 +23,7 @@ class HistoryItemComponent extends StatelessWidget {
           child: Text(
             'Red: ${color.red}, Green: ${color.green}, Blue: ${color.blue}',
             style: TextStyle(
-              color:
-                  color.computeLuminance() > 0.5 ? Colors.black : Colors.white,
+              color: _calculateTextColor(),
             ),
           ),
         ),

@@ -1,5 +1,5 @@
+import 'package:colorful_greetings/color_display/state/color_state.dart';
 import 'package:colorful_greetings/core/repository/color_repository.dart';
-import 'package:colorful_greetings/home/state/color_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
