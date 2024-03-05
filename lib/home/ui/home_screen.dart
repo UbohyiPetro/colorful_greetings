@@ -1,3 +1,4 @@
+import 'package:colorful_greetings/history/controller/history_controller.dart';
 import 'package:colorful_greetings/history/ui/history_drawer.dart';
 import 'package:colorful_greetings/home/controller/color_controller.dart';
 import 'package:colorful_greetings/theme/spacing.dart';
@@ -9,13 +10,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorController colorController = Get.find<ColorController>();
+    Get.put(HistoryController());;
+    final ColorController colorController = Get.put(ColorController());
     return Obx(
       () => GestureDetector(
-        onTap: colorController.generateNewColor,
+        onTap: colorController.generateColor,
         child: Scaffold(
           endDrawer: const HistoryDrawer(),
-          backgroundColor: colorController.getCurrentBackgroundColor(),
+          backgroundColor: colorController.colorState.color.value,
           appBar: AppBar(
             actions: [
               Builder(
@@ -41,12 +43,7 @@ class HomeScreen extends StatelessWidget {
               child: Text(
                 'Hello There',
                 style: TextStyle(
-                  color: colorController
-                              .getCurrentBackgroundColor()
-                              .computeLuminance() >
-                          0.5
-                      ? Colors.black
-                      : Colors.white,
+                  color: colorController.colorState.textColor.value,
                 ),
               ),
             ),

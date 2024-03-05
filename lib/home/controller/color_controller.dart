@@ -1,36 +1,33 @@
-import 'package:colorful_greetings/history/controller/history_controller.dart';
-import 'package:colorful_greetings/history/mapper/history_mapper.dart';
-import 'package:colorful_greetings/home/mapper/color_mapper.dart';
+import 'package:colorful_greetings/core/repository/color_repository.dart';
 import 'package:colorful_greetings/home/state/color_state.dart';
-import 'package:colorful_greetings/util/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ColorController extends GetxController {
-  final HistoryController historyController = Get.find<HistoryController>();
   final ColorState colorState = ColorState();
-  final ColorManager _colorManager = ColorManager();
+  final ColorRepository _colorRepository = Get.find();
 
   @override
   void onInit() {
-    generateNewColor();
+    _observeColor();
     super.onInit();
   }
 
-  Color getCurrentBackgroundColor() {
-    return colorState.colorItem.value.toColor();
+  void generateColor() {
+    _colorRepository.generateColor();
   }
 
-  Color setTextColorBasedOnItemBackground(Color backgroundColor) {
+  void _observeColor() {
+    _colorRepository.observeColor().listen((color) {
+      colorState.color.value = color;
+      colorState.textColor.value = _calculateTextColor();
+    });
+  }
+
+  Color _calculateTextColor() {
+    final backgroundColor = colorState.color.value;
     return backgroundColor.computeLuminance() > 0.5
         ? Colors.black
         : Colors.white;
-  }
-
-  void generateNewColor() {
-    final colorItem = _colorManager.generateColor().toColorItem();
-    colorState.colorItem.value = colorItem;
-    final historyItem = colorItem.toColor().toHistoryModel();
-    historyController.addColorToHistory(historyItem);
   }
 }
