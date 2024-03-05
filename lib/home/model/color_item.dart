@@ -1,7 +1,7 @@
 class ColorItem {
-  final int red;
-  final int green;
-  final int blue;
+  int red;
+  int green;
+  int blue;
 
-  ColorItem({required this.red, required this.green, required this.blue});
+  ColorItem({this.red = 0, this.green = 0, this.blue = 0});
 }

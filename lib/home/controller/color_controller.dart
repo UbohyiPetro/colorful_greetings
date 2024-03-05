@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:colorful_greetings/history/controller/history_controller.dart';
+import 'package:colorful_greetings/home/mapper/color_mapper.dart';
+import 'package:colorful_greetings/home/model/color_item.dart';
 import 'package:colorful_greetings/home/state/color_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,11 +19,7 @@ class ColorController extends GetxController {
   }
 
   Color getCurrentBackgroundColor() {
-    final red = colorState.red.value;
-    final green = colorState.green.value;
-    final blue = colorState.blue.value;
-    final Color backgroundColor = Color.fromRGBO(red, green, blue, 1.0);
-    return backgroundColor;
+    return colorState.colorItem.value.toColor();
   }
 
   Color setTextColorBasedOnItemBackground(Color backgroundColor) {
@@ -35,9 +33,7 @@ class ColorController extends GetxController {
     final red = _random.nextInt(maxColorValue);
     final green = _random.nextInt(maxColorValue);
     final blue = _random.nextInt(maxColorValue);
-    colorState.red.value = red;
-    colorState.green.value = green;
-    colorState.blue.value = blue;
+    colorState.colorItem.value = ColorItem(red: red, green: green, blue: blue);
     final historyItem =
         historyController.generateHistoryModelFromColor(red, green, blue);
     historyController.addColorToHistory(historyItem);
