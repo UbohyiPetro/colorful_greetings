@@ -10,15 +10,6 @@ class HistoryController extends GetxController {
     super.onInit();
   }
 
-  HistoryModel generateHistoryModelFromColor(int red, int green, int blue) {
-    final HistoryModel historyModel = HistoryModel(
-      red: red,
-      green: green,
-      blue: blue,
-    );
-    return historyModel;
-  }
-
   List<HistoryModel> getHistoryList() {
     return historyState.history;
   }
