@@ -1,16 +1,10 @@
 # colorful_greetings
 
-A new Flutter project.
+A simple Flutter application that displays the text "Hello there" in the middle of the screen. Upon tapping anywhere on the screen, the background color changes to a randomly generated color. Additionally, the application features a color history functionality, allowing users to change the current background color to a color from the history. The project utilizes the getX state management library.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Display "Hello there" text in the middle of the screen.
+- Change background color to a randomly generated color upon tapping anywhere on the screen.
+- Color history functionality to select and apply colors from previous selections.
+- State management using the getX library.
