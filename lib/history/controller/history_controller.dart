@@ -1,5 +1,6 @@
 import 'package:colorful_greetings/core/repository/color_repository.dart';
 import 'package:colorful_greetings/history/state/history_state.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HistoryController extends GetxController {
@@ -10,6 +11,10 @@ class HistoryController extends GetxController {
   void onInit() {
     _observeColorHistory();
     super.onInit();
+  }
+
+  void selectColorFromHistory(Color color) {
+    _colorRepository.selectColorFromHistory(color);
   }
 
   void _observeColorHistory() {

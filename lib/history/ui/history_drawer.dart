@@ -21,7 +21,12 @@ class HistoryDrawer extends StatelessWidget {
             itemCount: colors.length,
             itemBuilder: (BuildContext context, int index) {
               final color = colors[index];
-              return HistoryItemComponent(color: color);
+              return HistoryItemComponent(
+                color: color,
+                onTap: (Color color) => {
+                  historyController.selectColorFromHistory(color)
+                },
+              );
             },
           ),
         ),
